@@ -1,0 +1,174 @@
+Build a modern, interactive developer portfolio for **Sinde Saikiran**, a Computer Science student from India specializing in AI, Machine Learning, and Full Stack Development.
+
+Tech Stack:
+Frontend:
+
+* Next.js
+* React.js
+* Tailwind CSS
+* Framer Motion
+* Three.js (for 3D hero animation)
+
+Backend:
+
+* Node.js
+* Express.js
+* MongoDB
+
+Design Requirements:
+
+* Dark modern UI
+* Gradient highlights
+* Glassmorphism cards
+* Smooth scrolling animations
+* Fully responsive (mobile + desktop)
+
+Sections:
+
+1. Hero Section
+
+* Large profile photo
+* Name: **Sinde Saikiran**
+* Title: **Full Stack Developer | AI & ML Enthusiast**
+* Animated typing effect
+* Buttons:
+
+  * View Projects
+  * Download Resume
+* Social Icons:
+
+  * GitHub
+  * LinkedIn
+* 3D animated background
+
+2. Profile Section
+   Create a modern **profile card dashboard** containing:
+
+Profile photo
+Name: Sinde Saikiran
+Role: Computer Science Student
+Location: India
+
+Bio:
+"I am passionate about Artificial Intelligence, Machine Learning, and Full Stack Development. I enjoy building intelligent systems and scalable applications that solve real-world problems."
+
+Add:
+
+* Email
+* GitHub link
+* LinkedIn link
+* Resume download button
+
+3. Skills Section
+   Display skills using animated cards with icons.
+
+Programming Languages:
+
+* Python
+* JavaScript
+* Java
+
+Frameworks:
+
+* React Native
+* Node.js
+* Express.js
+
+Databases:
+
+* MongoDB
+* SQLite
+
+Tools:
+
+* Git
+* Firebase
+* Expo
+* REST APIs
+
+4. Projects Section
+   Create animated project cards with hover effects.
+
+Projects:
+
+1. Intelligent Agent Job Search System
+   Python AI system that automatically finds relevant jobs.
+
+2. Air Pollution Prediction using Machine Learning
+   Machine learning model predicting air pollution using historical datasets.
+
+3. AI Agriculture Mobile Application
+   React Native + Node.js + MongoDB mobile application that helps farmers decide planting time using climate data.
+
+4. Stock Price Checker
+   Full stack JavaScript application that fetches real-time stock prices.
+
+5. Rock Paper Scissors AI Bot
+   Machine learning bot trained to beat other bots with over 60% win rate.
+
+Each project card must contain:
+
+* Project image
+* Description
+* Tech stack
+* GitHub link
+
+5. GitHub Stats Section
+   Integrate GitHub API and display:
+
+* GitHub contributions graph
+* Total repositories
+* Most used languages
+* GitHub streak stats
+
+6. Achievements Section
+   Display timeline cards showing:
+
+* Participation in AI Agriculture Hackathon
+* Experience building Machine Learning projects
+* Full stack development experience
+
+7. AI Chatbot Section
+   Create an AI chatbot assistant in the portfolio that can answer questions about:
+
+* My skills
+* My projects
+* My experience
+* My contact details
+
+8. Contact Section
+   Create a contact form with backend API.
+
+Fields:
+
+* Name
+* Email
+* Message
+
+Store messages in MongoDB.
+
+Backend APIs:
+GET /projects
+GET /skills
+POST /contact
+
+Folder Structure:
+
+portfolio/
+
+frontend/
+src/
+components/
+pages/
+assets/
+
+backend/
+controllers/
+models/
+routes/
+
+Deployment:
+Frontend: Vercel
+Backend: Render
+
+Also include a README file explaining how to run and deploy the project.

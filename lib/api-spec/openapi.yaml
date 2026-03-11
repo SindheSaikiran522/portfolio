@@ -1,0 +1,337 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Sinde Saikiran Portfolio API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: projects
+    description: Portfolio projects
+  - name: skills
+    description: Developer skills
+  - name: contact
+    description: Contact messages
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /projects:
+    get:
+      operationId: getProjects
+      tags: [projects]
+      summary: Get all portfolio projects
+      responses:
+        "200":
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Project"
+  /skills:
+    get:
+      operationId: getSkills
+      tags: [skills]
+      summary: Get all skills grouped by category
+      responses:
+        "200":
+          description: Skills by category
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SkillsResponse"
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit a contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactResponse"
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /profile:
+    get:
+      operationId: getProfile
+      tags: [profile]
+      summary: Get profile data
+      responses:
+        "200":
+          description: Profile data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+    put:
+      operationId: updateProfile
+      tags: [profile]
+      summary: Update profile data (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileInput"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /admin/login:
+    post:
+      operationId: adminLogin
+      tags: [profile]
+      summary: Verify admin password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdminLoginInput"
+      responses:
+        "200":
+          description: Login result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminLoginResponse"
+        "401":
+          description: Wrong password
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /chatbot:
+    post:
+      operationId: chatbotQuery
+      tags: [contact]
+      summary: Query the AI chatbot assistant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatbotInput"
+      responses:
+        "200":
+          description: Chatbot response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatbotResponse"
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        techStack:
+          type: array
+          items:
+            type: string
+        githubUrl:
+          type: string
+        imageUrl:
+          type: string
+      required:
+        - id
+        - title
+        - description
+        - techStack
+        - githubUrl
+        - imageUrl
+    SkillCategory:
+      type: object
+      properties:
+        category:
+          type: string
+        skills:
+          type: array
+          items:
+            type: string
+      required:
+        - category
+        - skills
+    SkillsResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/SkillCategory"
+      required:
+        - categories
+    ContactInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+          format: email
+        message:
+          type: string
+          minLength: 1
+      required:
+        - name
+        - email
+        - message
+    ContactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+    ChatbotInput:
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+    ChatbotResponse:
+      type: object
+      properties:
+        reply:
+          type: string
+      required:
+        - reply
+    Profile:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        location:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        githubUrl:
+          type: string
+        linkedinUrl:
+          type: string
+        resumeUrl:
+          type: string
+        tagline:
+          type: string
+        githubUsername:
+          type: string
+      required:
+        - name
+        - role
+        - location
+        - email
+        - bio
+        - githubUrl
+        - linkedinUrl
+        - resumeUrl
+        - tagline
+        - githubUsername
+    ProfileInput:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+        location:
+          type: string
+        email:
+          type: string
+        bio:
+          type: string
+        githubUrl:
+          type: string
+        linkedinUrl:
+          type: string
+        resumeUrl:
+          type: string
+        tagline:
+          type: string
+        githubUsername:
+          type: string
+        adminPassword:
+          type: string
+      required:
+        - adminPassword
+    AdminLoginInput:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+    AdminLoginResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+        - success
+        - message

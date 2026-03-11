@@ -1,0 +1,20 @@
+packages:
+  "framer-motion": "For premium smooth animations, section transitions, and interactive components"
+  "react-hook-form": "Form state management"
+  "@hookform/resolvers": "Zod resolver for forms"
+  "zod": "Schema validation for contact and chatbot forms"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility for merging Tailwind classes safely"
+  "lucide-react": "Beautiful consistent icon set"
+
+images:
+  - path: "artifacts/portfolio/public/images/avatar.png"
+    description: "Futuristic professional avatar silhouette of a developer in deep space aesthetic, glowing cyan and purple rim light, highly detailed 3D style"
+    aspect_ratio: "1:1"
+  - path: "artifacts/portfolio/public/images/space-bg.png"
+    description: "Deep space abstract background with subtle glowing nebulas in cyan and deep magenta, dark void, very minimal, great for text overlay"
+    aspect_ratio: "16:9"
+
+notes:
+  - Assumes backend API endpoints are available at /api/* as per the OpenAPI spec.
+  - Using generated React Query hooks from @workspace/api-client-react.
